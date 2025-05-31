@@ -9,7 +9,7 @@ jobs:
       - uses: docker://docker.io/fluidattacks/skims:latest
         name: skimsStandalone
         with:
-          args: skims scan configuracion-yml
+          args: skims scan configuracion.yml
 
       - name: Upload security scan results
         uses: actions/upload-artifact@v4
