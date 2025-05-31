@@ -7,6 +7,6 @@ language: EN
 sast:
   include:
     - .
-  exclude:
-    - glob(**/node_modules/**)
-    - glob(**/test/**)
+strict: true
+
+ 
