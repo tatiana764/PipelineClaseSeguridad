@@ -2,14 +2,25 @@
 name: Standalone CLI
 on: [push, pull_request]
 jobs:
-   machineStandalone:
-      runs-on: ubuntu-latest
-      steps:
-         - uses: actions/checkout@f095bcc56b7c2baf48f3ac70d6d6782f4f553222
-         - uses: docker://docker.io/fluidattacks/skims:latest
-           name: skimsStandalone
-           with:
-             args: skims scan configuracion.yml
-      
-            
-             
+  machineStandalone:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@f095bcc56b7c2baf48f3ac70d6d6782f4f553222
+      - uses: docker://docker.io/fluidattacks/skims:latest
+        name: skimsStandalone
+        with:
+          args: skims scan configuracion-yml
+
+      - name: Upload security scan results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: security-scan-results-csv
+          path: |
+            Fluid-Attacks-Results.csv
+            **/*.csv
+          retention-days: 30
+
+
+
+
