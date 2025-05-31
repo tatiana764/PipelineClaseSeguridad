@@ -9,5 +9,7 @@ jobs:
          - uses: docker://docker.io/fluidattacks/skims:latest
            name: skimsStandalone
            with:
-             args: skims scan /dir/to/scan
+             args: skims scan .
+             
+            
              
